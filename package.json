@@ -1,0 +1,24 @@
+{
+  "name": "unvlogable",
+  "version": "0.0.1",
+  "description": "Get a collection of metadata from a video URL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamuso/unvlogable.git"
+  },
+  "keywords": [
+    "video",
+    "wrapper"
+  ],
+  "author": "Manuel Muñoz Solera",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mamuso/unvlogable/issues"
+  },
+  "homepage": "https://github.com/mamuso/unvlogable#readme",
+  "dependencies": {}
+}
