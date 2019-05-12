@@ -8,7 +8,7 @@ const unvlogable = (videourl, options) => {
 
   // We can't do anything without a video service
   const videoservice = parseDomain(videourl)
-    ? parseDomain(videourl).domain
+    ? parseDomain(videourl).domain.toLowerCase()
     : null;
   if (!videoservice) {
     return false;
