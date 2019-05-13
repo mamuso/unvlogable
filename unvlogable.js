@@ -14,7 +14,12 @@ const unvlogable = (videourl, options) => {
     return false;
   }
 
-  return `Check this: ${videoservice}`;
+  return unvlogable[videoservice]();
 };
+
+// Services
+unvlogable.youtube = require("./src/youtube");
+unvlogable.youtu = require("./src/youtube");
+unvlogable.vimeo = require("./src/vimeo");
 
 module.exports = unvlogable;
