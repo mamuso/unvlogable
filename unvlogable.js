@@ -1,6 +1,6 @@
 const parseDomain = require("parse-domain");
 
-const unvlogable = (videourl, options) => {
+const unvlogable = async (videourl, options) => {
   // We can't do anything without a video url
   if (!videourl) {
     return false;
@@ -15,9 +15,7 @@ const unvlogable = (videourl, options) => {
   }
 
   let videotron = {};
-
-  // return unvlogable[videoservice]();
-
+  videotron = await unvlogable[videoservice](videourl, options);
   return videotron;
 };
 

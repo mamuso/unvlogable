@@ -20,7 +20,11 @@
     "url": "https://github.com/mamuso/unvlogable/issues"
   },
   "homepage": "https://github.com/mamuso/unvlogable#readme",
+  "jest": {
+    "testEnvironment": "node"
+  },
   "dependencies": {
+    "axios": "^0.18.0",
     "parse-domain": "^2.1.7"
   },
   "devDependencies": {
