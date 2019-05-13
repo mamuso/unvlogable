@@ -11,6 +11,16 @@ const youtube = async (videourl, options) => {
   // making the thumbnail better if we can
   thumbnail_url = thumbnail_url.replace("hqdefault", "maxresdefault");
 
+  // chaging dimensions of the
+  if (options && options.embed) {
+    html = options.embed.width
+      ? html.replace(`width="${width}"`, `width="${options.embed.width}"`)
+      : html;
+    html = options.embed.height
+      ? html.replace(`height="${height}"`, `height="${options.embed.height}"`)
+      : html;
+  }
+
   return {
     title: title,
     thumbnail: thumbnail_url,

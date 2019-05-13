@@ -1,8 +1,11 @@
 const unvlogable = require("../unvlogable");
 
-// test urls
+// Test urls
 const youtubeurl = "https://www.youtube.com/watch?v=mqOEzEPZ8iw";
 const youtuurl = "https://youtu.be/Sj3Fsgx6NAg";
+
+// Options
+const embedoptions = { embed: { width: "800", height: "600" } };
 
 test("calling without a url shoud return false", async () => {
   expect.assertions(1);

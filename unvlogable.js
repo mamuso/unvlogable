@@ -15,7 +15,7 @@ const unvlogable = async (videourl, options) => {
   }
 
   let videotron = {};
-  videotron = await unvlogable[videoservice](videourl);
+  videotron = await unvlogable[videoservice](videourl, options);
   return videotron;
 };
 
