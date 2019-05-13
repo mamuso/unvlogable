@@ -14,7 +14,11 @@ const unvlogable = (videourl, options) => {
     return false;
   }
 
-  return unvlogable[videoservice]();
+  let videotron = {};
+
+  // return unvlogable[videoservice]();
+
+  return videotron;
 };
 
 // Services
