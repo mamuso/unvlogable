@@ -6,6 +6,7 @@ const unvlogable = require('../unvlogable');
 const unsupportedurl = 'https://tapas.io/series/gameboylands';
 const youtubeurl = 'https://www.youtube.com/watch?v=mqOEzEPZ8iw';
 const youtuurl = 'https://youtu.be/Sj3Fsgx6NAg';
+const vimeourl = 'https://vimeo.com/243244233';
 
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
@@ -31,7 +32,8 @@ describe('testing youtube implementation', () => {
       thumbnail: expect.stringContaining('https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg'),
       embed: expect.stringContaining(
         '<iframe width="480" height="270" src="https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
+      ),
+      embed_url: expect.stringContaining('https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed')
     });
   });
 
@@ -43,7 +45,8 @@ describe('testing youtube implementation', () => {
       thumbnail: expect.stringContaining('https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg'),
       embed: expect.stringContaining(
         '<iframe width="800" height="600" src="https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
+      ),
+      embed_url: expect.stringContaining('https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed')
     });
   });
 
@@ -55,7 +58,8 @@ describe('testing youtube implementation', () => {
       thumbnail: expect.stringContaining('https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg'),
       embed: expect.stringContaining(
         '<iframe width="480" height="270" src="https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
+      ),
+      embed_url: expect.stringContaining('https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed')
     });
   });
 
@@ -67,7 +71,23 @@ describe('testing youtube implementation', () => {
       thumbnail: expect.stringContaining('https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg'),
       embed: expect.stringContaining(
         '<iframe width="800" height="600" src="https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
+      ),
+      embed_url: expect.stringContaining('https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed')
+    });
+  });
+});
+
+describe('testing vimeo implementation', () => {
+  test('using a vimeo url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(vimeourl);
+    expect(data).toMatchObject({
+      title: expect.stringContaining('Unexpected Discoveries'),
+      thumbnail: expect.stringContaining('https://i.vimeocdn.com/video/748767326_1280x720.jpg'),
+      embed: expect.stringContaining(
+        '<iframe src="https://player.vimeo.com/video/243244233?app_id=122963" width="426" height="240" frameborder="0" title="Unexpected Discoveries" allow="autoplay; fullscreen" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+      ),
+      embed_url: expect.stringContaining('https://player.vimeo.com/video/243244233?app_id=122963')
     });
   });
 });

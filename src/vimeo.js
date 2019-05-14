@@ -1,6 +1,7 @@
 'use strict';
 
 const helpers = require('./helpers.js');
+const cheerio = require('cheerio');
 
 const vimeo = async (videourl, options) => {
   // youtube oembed, returns a json
@@ -8,21 +9,23 @@ const vimeo = async (videourl, options) => {
 
   // gettign the data
   const response = await helpers.getData(url);
-  let { title, thumbnail_url, html, width, height } = response;
+  let { title, thumbnail_url, html } = response;
 
   // making the thumbnail better if we can
   thumbnail_url = thumbnail_url.replace('295x166', '1280x720');
 
-  // chaging dimensions of the
+  const $ = cheerio.load(html);
+  // embed width and height
   if (options && options.embed) {
-    html = options.embed.width ? html.replace(`width="${width}"`, `width="${options.embed.width}"`) : html;
-    html = options.embed.height ? html.replace(`height="${height}"`, `height="${options.embed.height}"`) : html;
+    options.embed.width && $('iframe').attr('width', options.embed.width);
+    options.embed.height && $('iframe').attr('height', options.embed.height);
   }
 
   return {
     title: title,
     thumbnail: thumbnail_url,
-    embed: html
+    embed: $('body').html(),
+    embed_url: $('iframe').attr('src')
   };
 };
 
