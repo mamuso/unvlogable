@@ -4,7 +4,9 @@
   "description": "Get a collection of metadata from a video URL",
   "main": "unvlogable.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "pretest": "eslint --ignore-path .gitignore .",
+    "fix": "prettier-eslint --write '{src,test}/**/*.{js,jsx}' "
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,12 @@
     "parse-domain": "^2.1.7"
   },
   "devDependencies": {
-    "jest": "^24.8.0"
+    "eslint": "^5.16.0",
+    "eslint-config-prettier": "^4.2.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "eslint-plugin-jest": "^22.5.1",
+    "jest": "^24.8.0",
+    "prettier-eslint": "^8.8.2",
+    "prettier-eslint-cli": "^4.7.1"
   }
 }

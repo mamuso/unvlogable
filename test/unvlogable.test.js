@@ -1,3 +1,5 @@
+"use strict";
+
 const unvlogable = require("../unvlogable");
 
 // Test urls
@@ -26,9 +28,7 @@ describe("testing youtube implementation", () => {
     const data = await unvlogable(youtubeurl);
     expect(data).toMatchObject({
       title: expect.stringContaining("OP-1 07-01-18 (Magic)"),
-      thumbnail: expect.stringContaining(
-        "https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg"
-      ),
+      thumbnail: expect.stringContaining("https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg"),
       embed: expect.stringContaining(
         '<iframe width="480" height="270" src="https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
       )
@@ -40,9 +40,7 @@ describe("testing youtube implementation", () => {
     const data = await unvlogable(youtubeurl, embedoptions);
     expect(data).toMatchObject({
       title: expect.stringContaining("OP-1 07-01-18 (Magic)"),
-      thumbnail: expect.stringContaining(
-        "https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg"
-      ),
+      thumbnail: expect.stringContaining("https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg"),
       embed: expect.stringContaining(
         '<iframe width="800" height="600" src="https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
       )
@@ -54,9 +52,7 @@ describe("testing youtube implementation", () => {
     const data = await unvlogable(youtuurl);
     expect(data).toMatchObject({
       title: expect.stringContaining("Adventure Audio - Merge"),
-      thumbnail: expect.stringContaining(
-        "https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg"
-      ),
+      thumbnail: expect.stringContaining("https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg"),
       embed: expect.stringContaining(
         '<iframe width="480" height="270" src="https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
       )
@@ -68,9 +64,7 @@ describe("testing youtube implementation", () => {
     const data = await unvlogable(youtuurl, embedoptions);
     expect(data).toMatchObject({
       title: expect.stringContaining("Adventure Audio - Merge"),
-      thumbnail: expect.stringContaining(
-        "https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg"
-      ),
+      thumbnail: expect.stringContaining("https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg"),
       embed: expect.stringContaining(
         '<iframe width="800" height="600" src="https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
       )
