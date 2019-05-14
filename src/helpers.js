@@ -1,4 +1,6 @@
-const axios = require("axios");
+'use strict';
+
+const axios = require('axios');
 
 // Async function to get a url
 const getData = async url => {

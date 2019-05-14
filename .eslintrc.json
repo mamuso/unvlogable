@@ -1,0 +1,14 @@
+{
+  "plugins": ["jest", "prettier"],
+  "parserOptions": {
+    "ecmaVersion": 2017
+  },
+  "extends": ["strongloop", "plugin:prettier/recommended"],
+  "rules": {
+    "max-len": [2, 120, 8]
+  },
+  "env": {
+    "es6": true,
+    "jest/globals": true
+  }
+}
