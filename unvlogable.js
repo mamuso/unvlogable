@@ -16,6 +16,7 @@ const unvlogable = async (videourl, options) => {
 
   let videotron = {};
   videotron = await unvlogable[videoservice](videourl, options);
+  console.log(videotron);
   return videotron;
 };
 
@@ -23,5 +24,6 @@ const unvlogable = async (videourl, options) => {
 unvlogable.youtube = require('./src/youtube');
 unvlogable.youtu = require('./src/youtube');
 unvlogable.vimeo = require('./src/vimeo');
+unvlogable.ted = require('./src/ted');
 
 module.exports = unvlogable;

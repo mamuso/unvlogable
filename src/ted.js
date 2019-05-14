@@ -3,9 +3,9 @@
 const helpers = require('./helpers.js');
 const cheerio = require('cheerio');
 
-const vimeo = async (videourl, options) => {
+const ted = async (videourl, options) => {
   // youtube oembed, returns a json
-  const url = `https://vimeo.com/api/oembed.json?url=${videourl}`;
+  const url = `https://www.ted.com/services/v1/oembed.json?url=${videourl}`;
 
   try {
     // gettign the data
@@ -13,7 +13,7 @@ const vimeo = async (videourl, options) => {
     let { title, thumbnail_url, html } = response;
 
     // making the thumbnail better if we can
-    thumbnail_url = thumbnail_url.replace('295x166', '1280x720');
+    thumbnail_url = thumbnail_url.replace('?h=316&w=560', '');
 
     const $ = cheerio.load(html);
     // embed width and height
@@ -36,4 +36,4 @@ const vimeo = async (videourl, options) => {
   }
 };
 
-module.exports = vimeo;
+module.exports = ted;
