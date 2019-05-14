@@ -10,7 +10,7 @@ const unvlogable = async (videourl, options) => {
   const videoservice = parseDomain(videourl)
     ? parseDomain(videourl).domain.toLowerCase()
     : null;
-  if (!videoservice) {
+  if (!videoservice || typeof unvlogable[videoservice] != "function") {
     return false;
   }
 

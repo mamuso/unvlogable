@@ -1,6 +1,7 @@
 const unvlogable = require("../unvlogable");
 
 // Test urls
+const unsupportedurl = "https://tapas.io/series/gameboylands";
 const youtubeurl = "https://www.youtube.com/watch?v=mqOEzEPZ8iw";
 const youtuurl = "https://youtu.be/Sj3Fsgx6NAg";
 
@@ -10,6 +11,12 @@ const embedoptions = { embed: { width: "800", height: "600" } };
 test("calling without a url shoud return false", async () => {
   expect.assertions(1);
   const data = await unvlogable();
+  expect(data).toBe(false);
+});
+
+test("calling with an unsuppoerted url should return false", async () => {
+  expect.assertions(1);
+  const data = await unvlogable(unsupportedurl);
   expect(data).toBe(false);
 });
 
