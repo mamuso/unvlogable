@@ -1,72 +1,72 @@
-"use strict";
+'use strict';
 
-const unvlogable = require("../unvlogable");
+const unvlogable = require('../unvlogable');
 
 // Test urls
-const unsupportedurl = "https://tapas.io/series/gameboylands";
-const youtubeurl = "https://www.youtube.com/watch?v=mqOEzEPZ8iw";
-const youtuurl = "https://youtu.be/Sj3Fsgx6NAg";
+const unsupportedurl = 'https://tapas.io/series/gameboylands';
+const youtubeurl = 'https://www.youtube.com/watch?v=mqOEzEPZ8iw';
+const youtuurl = 'https://youtu.be/Sj3Fsgx6NAg';
 
 // Options
-const embedoptions = { embed: { width: "800", height: "600" } };
+const embedoptions = { embed: { width: '800', height: '600' } };
 
-test("calling without a url shoud return false", async () => {
+test('calling without a url shoud return false', async () => {
   expect.assertions(1);
   const data = await unvlogable();
   expect(data).toBe(false);
 });
 
-test("calling with an unsuppoerted url should return false", async () => {
+test('calling with an unsuppoerted url should return false', async () => {
   expect.assertions(1);
   const data = await unvlogable(unsupportedurl);
   expect(data).toBe(false);
 });
 
-describe("testing youtube implementation", () => {
-  test("using a youtube url", async () => {
+describe('testing youtube implementation', () => {
+  test('using a youtube url', async () => {
     expect.assertions(1);
     const data = await unvlogable(youtubeurl);
     expect(data).toMatchObject({
-      title: expect.stringContaining("OP-1 07-01-18 (Magic)"),
-      thumbnail: expect.stringContaining("https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg"),
+      title: expect.stringContaining('OP-1 07-01-18 (Magic)'),
+      thumbnail: expect.stringContaining('https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg'),
       embed: expect.stringContaining(
-        '<iframe width="480" height="270" src="https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        '<iframe width="480" height="270" src="https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
       )
     });
   });
 
-  test("using a youtube url with embed options", async () => {
+  test('using a youtube url with embed options', async () => {
     expect.assertions(1);
     const data = await unvlogable(youtubeurl, embedoptions);
     expect(data).toMatchObject({
-      title: expect.stringContaining("OP-1 07-01-18 (Magic)"),
-      thumbnail: expect.stringContaining("https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg"),
+      title: expect.stringContaining('OP-1 07-01-18 (Magic)'),
+      thumbnail: expect.stringContaining('https://i.ytimg.com/vi/mqOEzEPZ8iw/maxresdefault.jpg'),
       embed: expect.stringContaining(
-        '<iframe width="800" height="600" src="https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        '<iframe width="800" height="600" src="https://www.youtube.com/embed/mqOEzEPZ8iw?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
       )
     });
   });
 
-  test("using a short youtube url", async () => {
+  test('using a short youtube url', async () => {
     expect.assertions(1);
     const data = await unvlogable(youtuurl);
     expect(data).toMatchObject({
-      title: expect.stringContaining("Adventure Audio - Merge"),
-      thumbnail: expect.stringContaining("https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg"),
+      title: expect.stringContaining('Adventure Audio - Merge'),
+      thumbnail: expect.stringContaining('https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg'),
       embed: expect.stringContaining(
-        '<iframe width="480" height="270" src="https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        '<iframe width="480" height="270" src="https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
       )
     });
   });
 
-  test("using a short youtube url with embed options", async () => {
+  test('using a short youtube url with embed options', async () => {
     expect.assertions(1);
     const data = await unvlogable(youtuurl, embedoptions);
     expect(data).toMatchObject({
-      title: expect.stringContaining("Adventure Audio - Merge"),
-      thumbnail: expect.stringContaining("https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg"),
+      title: expect.stringContaining('Adventure Audio - Merge'),
+      thumbnail: expect.stringContaining('https://i.ytimg.com/vi/Sj3Fsgx6NAg/maxresdefault.jpg'),
       embed: expect.stringContaining(
-        '<iframe width="800" height="600" src="https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+        '<iframe width="800" height="600" src="https://www.youtube.com/embed/Sj3Fsgx6NAg?feature=oembed" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
       )
     });
   });
