@@ -4,6 +4,7 @@ const unvlogable = require('../unvlogable');
 
 // Test urls
 const unsupportedurl = 'https://tapas.io/series/gameboylands';
+const inexistenturl = 'https://www.youtube.com/watch?v=mqOE8iw';
 const youtubeurl = 'https://www.youtube.com/watch?v=mqOEzEPZ8iw';
 const youtuurl = 'https://youtu.be/Sj3Fsgx6NAg';
 const vimeourl = 'https://vimeo.com/243244233';
@@ -21,6 +22,14 @@ test('calling with an unsuppoerted url should return false', async () => {
   expect.assertions(1);
   const data = await unvlogable(unsupportedurl);
   expect(data).toBe(false);
+});
+
+test('calling with an inexistent url should throw an error', async () => {
+  expect.assertions(1);
+  const data = await unvlogable(inexistenturl);
+  expect(data).toMatchObject({
+    error: expect.stringContaining('Request failed with status code 404')
+  });
 });
 
 describe('testing youtube implementation', () => {

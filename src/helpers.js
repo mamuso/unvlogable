@@ -8,8 +8,9 @@ const getData = async url => {
     const response = await axios.get(url);
     const data = response.data;
     return data;
-  } catch (error) {
-    console.log(error);
+  } catch (e) {
+    console.error('Error:', e.message, e.stack);
+    throw new Error(e.message);
   }
 };
 
