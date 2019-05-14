@@ -24,7 +24,7 @@ const youtube = async (videourl, options) => {
 
     return {
       title: title,
-      thumbnail: thumbnail_url,
+      thumbnail_url: thumbnail_url,
       embed: $('body').html(),
       embed_url: $('iframe').attr('src')
     };
