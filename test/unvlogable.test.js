@@ -9,6 +9,9 @@ const youtubeurl = 'https://www.youtube.com/watch?v=mqOEzEPZ8iw';
 const youtuurl = 'https://youtu.be/Sj3Fsgx6NAg';
 const vimeourl = 'https://vimeo.com/243244233';
 const tedurl = 'https://www.ted.com/talks/matt_walker_sleep_is_your_superpower';
+const collegehumorurl = 'http://www.collegehumor.com/video/40004560/eat-mayo-wherever-you-go';
+const collegehumornotvideourl =
+  'http://www.collegehumor.com/post/7014600/5-differences-between-college-freshmen-and-college-seniors';
 
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
@@ -115,6 +118,31 @@ describe('testing ted.com implementation', () => {
         '<iframe src="https://embed.ted.com/talks/matt_walker_sleep_is_your_superpower" width="560" height="316" frameborder="0" scrolling="no" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>' /* eslint-disable-line max-len */
       ),
       embed_url: expect.stringContaining('https://embed.ted.com/talks/matt_walker_sleep_is_your_superpower')
+    });
+  });
+});
+
+describe('testing collegehumor implementation', () => {
+  test('using a collegehumor url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(collegehumorurl);
+    expect(data).toMatchObject({
+      title: expect.stringContaining('Eat Mayo Wherever You Go'),
+      thumbnail_url: expect.stringContaining(
+        'http://2.media.collegehumor.cvcdn.com/39/59/2da787654a97800493afbdb85a9d6f21-eat-mayo-wherever-you-go.jpeg'
+      ),
+      embed: expect.stringContaining(
+        '<iframe src="http://www.collegehumor.com/e/40004560" width="610" height="343" frameborder="0" webkitallowfullscreen allowfullscreen></iframe>' /* eslint-disable-line max-len */
+      ),
+      embed_url: expect.stringContaining('http://www.collegehumor.com/e/40004560')
+    });
+  });
+
+  test('using a non video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(collegehumornotvideourl);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
     });
   });
 });
