@@ -45,7 +45,7 @@ const unvlogable = async (videourl, options) => {
       error: e.message
     };
   }
-  console.log(videotron);
+
   return videotron;
 };
 
@@ -58,5 +58,6 @@ unvlogable.collegehumor = require('./src/collegehumor');
 unvlogable.dailymotion = require('./src/dailymotion');
 unvlogable.twitch = require('./src/twitch');
 unvlogable.metacafe = require('./src/metacafe');
+unvlogable.gfycat = require('./src/gfycat');
 
 module.exports = unvlogable;
