@@ -14,6 +14,9 @@ const collegehumornotvideourl =
   'http://www.collegehumor.com/post/7014600/5-differences-between-college-freshmen-and-college-seniors';
 const dailymotionurl = 'https://www.dailymotion.com/video/x77rfy1';
 const twitchurl = 'https://www.twitch.tv/videos/425338074';
+const metacafeurl = 'http://www.metacafe.com/watch/11560991/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/';
+const metacafenotvideourl =
+  'http://www.metacafe.com/watch/115609asdfg91/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/';
 
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
@@ -191,6 +194,31 @@ describe('testing twitch implementation', () => {
   test('using a non video url', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${twitchurl}1234`);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
+    });
+  });
+});
+
+describe('testing metacafe implementation', () => {
+  test('using a metacafe url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(metacafeurl);
+    expect(data).toMatchObject({
+      provider_name: 'metacafe',
+      title: expect.stringMatching('This Is What Happens When A Cow Falls In Love For A Man'),
+      thumbnail_url: expect.stringMatching(
+        'http://cdn.mcstatic.com/contents/videos_screenshots/11560000/11560991/preview.jpg' /* eslint-disable-line max-len */
+      ),
+      html: expect.stringContaining(
+        '<iframe width="560" height="315" src="http://www.metacafe.com/embed/11560991/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/" frameborder="0" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+      )
+    });
+  });
+
+  test('using a non video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(`${metacafenotvideourl}`);
     expect(data).toMatchObject({
       error: expect.stringContaining('Request failed with status code 404')
     });

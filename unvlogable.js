@@ -45,7 +45,7 @@ const unvlogable = async (videourl, options) => {
       error: e.message
     };
   }
-
+  console.log(videotron);
   return videotron;
 };
 
