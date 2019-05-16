@@ -17,7 +17,7 @@ const twitchurl = 'https://www.twitch.tv/videos/425338074';
 const metacafeurl = 'http://www.metacafe.com/watch/11560991/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/';
 const metacafenotvideourl =
   'http://www.metacafe.com/watch/115609asdfg91/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/';
-
+const gfycaturl = 'https://gfycat.com/boringmerryhyena-michaela-coel-chewing-gum-awkward';
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
 
@@ -212,6 +212,29 @@ describe('testing metacafe implementation', () => {
       ),
       html: expect.stringContaining(
         '<iframe width="560" height="315" src="http://www.metacafe.com/embed/11560991/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/" frameborder="0" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+      )
+    });
+  });
+
+  test('using a non video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(`${metacafenotvideourl}`);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
+    });
+  });
+});
+
+describe('testing gfycat implementation', () => {
+  test('using a gfycat url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(gfycaturl);
+    expect(data).toMatchObject({
+      provider_name: 'gfycat',
+      title: expect.stringMatching('Michaela Coel - Chewing Gum Hi'),
+      thumbnail_url: expect.stringMatching('https://thumbs.gfycat.com/BoringMerryHyena-mobile.jpg'),
+      html: expect.stringContaining(
+        '<iframe src="https://gfycat.com/ifr/boringmerryhyena" frameborder="0" scrolling="no" width="100%" height="100%" style="position:absolute;top:0;left:0;" allowfullscreen></iframe>' /* eslint-disable-line max-len */
       )
     });
   });
