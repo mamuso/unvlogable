@@ -25,8 +25,8 @@ const unvlogable = async (videourl, options) => {
 
     // embed width and height
     if (options && options.embed) {
-      options.embed.width && $('iframe').attr('width', options.embed.width);
-      options.embed.height && $('iframe').attr('height', options.embed.height);
+      options.embed.width && $('iframe').attr('width', options.embed.width) && (width = options.embed.width);
+      options.embed.height && $('iframe').attr('height', options.embed.height) && (height = options.embed.height);
     }
 
     videotron = {
@@ -36,8 +36,8 @@ const unvlogable = async (videourl, options) => {
       title: title,
       thumbnail_url: thumbnail_url,
       html: $('body').html(),
-      width: options.embed.width ? options.embed.width : width,
-      height: options.embed.height ? options.embed.height : height
+      width: width,
+      height: height
     };
   } catch (e) {
     console.error('Error:', e.message, e.stack);
