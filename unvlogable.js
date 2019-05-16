@@ -25,8 +25,8 @@ const unvlogable = async (videourl, options) => {
 
     // embed width and height
     if (options && options.embed) {
-      options.embed.width && $('iframe').attr('width', options.embed.width);
-      options.embed.height && $('iframe').attr('height', options.embed.height);
+      options.embed.width && $('iframe').attr('width', options.embed.width) && (width = options.embed.width);
+      options.embed.height && $('iframe').attr('height', options.embed.height) && (height = options.embed.height);
     }
 
     videotron = {
@@ -56,5 +56,6 @@ unvlogable.vimeo = require('./src/vimeo');
 unvlogable.ted = require('./src/ted');
 unvlogable.collegehumor = require('./src/collegehumor');
 unvlogable.dailymotion = require('./src/dailymotion');
+unvlogable.twitch = require('./src/twitch');
 
 module.exports = unvlogable;

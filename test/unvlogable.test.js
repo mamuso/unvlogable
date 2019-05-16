@@ -13,6 +13,7 @@ const collegehumorurl = 'http://www.collegehumor.com/video/40004560/eat-mayo-whe
 const collegehumornotvideourl =
   'http://www.collegehumor.com/post/7014600/5-differences-between-college-freshmen-and-college-seniors';
 const dailymotionurl = 'https://www.dailymotion.com/video/x77rfy1';
+const twitchurl = 'https://www.twitch.tv/videos/425338074';
 
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
@@ -165,6 +166,31 @@ describe('testing dailymotion implementation', () => {
   test('using a non video url', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${dailymotionurl}1234`);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
+    });
+  });
+});
+
+describe('testing twitch implementation', () => {
+  test('using a twitch url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(twitchurl);
+    expect(data).toMatchObject({
+      provider_name: 'twitch',
+      title: expect.stringMatching('Mario Maker 2 Live Reactions'),
+      thumbnail_url: expect.stringMatching(
+        'https://static-cdn.jtvnw.net/s3_vods/948ac833e8456154887f_kindafunnygames_34132255712_1201926963/thumb/thumb0-1280x720.jpg' /* eslint-disable-line max-len */
+      ),
+      html: expect.stringContaining(
+        '<iframe src="https://player.twitch.tv/?%21branding=&amp;autoplay=false&amp;video=v425338074" width="500" height="281" frameborder="0" scrolling="no" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+      )
+    });
+  });
+
+  test('using a non video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(`${twitchurl}1234`);
     expect(data).toMatchObject({
       error: expect.stringContaining('Request failed with status code 404')
     });
