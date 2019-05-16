@@ -15,9 +15,7 @@ const collegehumor = async (videourl, options) => {
   const videopage = await helpers.getData(videourl);
   const $ = cheerio.load(videopage);
   const ogimage = $('meta[property="og:image"]').attr('content');
-  if (ogimage) {
-    thumbnail_url = ogimage;
-  }
+  if (ogimage) thumbnail_url = ogimage;
 
   return { title, thumbnail_url, html, width, height };
 };
