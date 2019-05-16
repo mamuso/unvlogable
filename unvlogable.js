@@ -36,8 +36,8 @@ const unvlogable = async (videourl, options) => {
       title: title,
       thumbnail_url: thumbnail_url,
       html: $('body').html(),
-      width: width,
-      height: height
+      width: options.embed.width ? options.embed.width : width,
+      height: options.embed.height ? options.embed.height : height
     };
   } catch (e) {
     console.error('Error:', e.message, e.stack);
@@ -56,5 +56,6 @@ unvlogable.vimeo = require('./src/vimeo');
 unvlogable.ted = require('./src/ted');
 unvlogable.collegehumor = require('./src/collegehumor');
 unvlogable.dailymotion = require('./src/dailymotion');
+unvlogable.twitch = require('./src/twitch');
 
 module.exports = unvlogable;
