@@ -57,5 +57,6 @@ unvlogable.ted = require('./src/ted');
 unvlogable.collegehumor = require('./src/collegehumor');
 unvlogable.dailymotion = require('./src/dailymotion');
 unvlogable.twitch = require('./src/twitch');
+unvlogable.metacafe = require('./src/metacafe');
 
 module.exports = unvlogable;
