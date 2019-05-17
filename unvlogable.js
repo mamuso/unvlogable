@@ -60,5 +60,6 @@ unvlogable.twitch = require('./src/twitch');
 unvlogable.metacafe = require('./src/metacafe');
 unvlogable.gfycat = require('./src/gfycat');
 unvlogable.giphy = require('./src/giphy');
+unvlogable.livestream = require('./src/livestream');
 
 module.exports = unvlogable;
