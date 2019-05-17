@@ -19,6 +19,7 @@ const metacafenotvideourl =
   'http://www.metacafe.com/watch/115609asdfg91/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/';
 const gfycaturl = 'https://gfycat.com/boringmerryhyena-michaela-coel-chewing-gum-awkward';
 const giphyurl = 'https://giphy.com/gifs/80s-back-to-the-future-happening-now-ktRHi4nFxNDOw';
+const livestreamurl = 'https://livestream.com/accounts/4175709/nestcam/videos/87117623';
 
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
@@ -267,6 +268,31 @@ describe('testing giphy implementation', () => {
   test('using a non video url', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${giphyurl}1234`);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
+    });
+  });
+});
+
+describe('testing livestream implementation', () => {
+  test('using a livestream url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(livestreamurl);
+    expect(data).toMatchObject({
+      provider_name: 'livestream',
+      title: expect.stringMatching('The Great Kit-napping Caper'),
+      thumbnail_url: expect.stringMatching(
+        'https://img.new.livestream.com/videos/0000000005314f37/32addd64-fa30-4237-ba9c-9f30ab15a20f_1280x720.jpg'
+      ),
+      html: expect.stringContaining(
+        '<iframe src="https://livestream.com/accounts/4175709/events/4030780/videos/87117623/player?width=640&amp;height=360&amp;autoPlay=true&amp;mute=false" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+      )
+    });
+  });
+
+  test('using a non video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(`${livestreamurl}1234`);
     expect(data).toMatchObject({
       error: expect.stringContaining('Request failed with status code 404')
     });
