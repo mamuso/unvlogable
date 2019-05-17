@@ -20,6 +20,7 @@ const metacafenotvideourl =
 const gfycaturl = 'https://gfycat.com/boringmerryhyena-michaela-coel-chewing-gum-awkward';
 const giphyurl = 'https://giphy.com/gifs/80s-back-to-the-future-happening-now-ktRHi4nFxNDOw';
 const livestreamurl = 'https://livestream.com/accounts/4175709/nestcam/videos/87117623';
+const myspaceurl = 'https://myspace.com/cypher.sessions/video/cypher-sessions-lex/109851405';
 
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
@@ -214,7 +215,7 @@ describe('testing metacafe implementation', () => {
         'http://cdn.mcstatic.com/contents/videos_screenshots/11560000/11560991/preview.jpg' /* eslint-disable-line max-len */
       ),
       html: expect.stringContaining(
-        '<iframe width="560" height="315" src="http://www.metacafe.com/embed/11560991/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/" frameborder="0" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+        '<iframe width="328" height="480" src="http://www.metacafe.com/embed/11560991/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/" frameborder="0" allowfullscreen></iframe>' /* eslint-disable-line max-len */
       )
     });
   });
@@ -293,6 +294,31 @@ describe('testing livestream implementation', () => {
   test('using a non video url', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${livestreamurl}1234`);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
+    });
+  });
+});
+
+describe('testing myspace implementation', () => {
+  test('using a myspace url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(myspaceurl);
+    expect(data).toMatchObject({
+      provider_name: 'myspace',
+      title: expect.stringMatching('Cypher Sessions - Lex Video by Cypher Sessions on Myspace'),
+      thumbnail_url: expect.stringMatching(
+        'https://a4-images.myspacecdn.com/images04/6/5ae15811a99f465eae60e1c88504e1a5/full.jpg'
+      ),
+      html: expect.stringContaining(
+        '<iframe width="1280" height="720" src="https://myspace.com/play/video/cypher-sessions-lex-109851405-112547939" frameborder="0" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+      )
+    });
+  });
+
+  test('using a non video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(`${myspaceurl}1234`);
     expect(data).toMatchObject({
       error: expect.stringContaining('Request failed with status code 404')
     });

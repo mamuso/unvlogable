@@ -50,16 +50,17 @@ const unvlogable = async (videourl, options) => {
 };
 
 // Services
-unvlogable.youtube = require('./src/youtube');
-unvlogable.youtu = require('./src/youtube');
-unvlogable.vimeo = require('./src/vimeo');
-unvlogable.ted = require('./src/ted');
 unvlogable.collegehumor = require('./src/collegehumor');
 unvlogable.dailymotion = require('./src/dailymotion');
-unvlogable.twitch = require('./src/twitch');
-unvlogable.metacafe = require('./src/metacafe');
 unvlogable.gfycat = require('./src/gfycat');
 unvlogable.giphy = require('./src/giphy');
 unvlogable.livestream = require('./src/livestream');
+unvlogable.metacafe = require('./src/metacafe');
+unvlogable.myspace = require('./src/myspace');
+unvlogable.ted = require('./src/ted');
+unvlogable.twitch = require('./src/twitch');
+unvlogable.vimeo = require('./src/vimeo');
+unvlogable.youtube = require('./src/youtube');
+unvlogable.youtu = require('./src/youtube');
 
 module.exports = unvlogable;
