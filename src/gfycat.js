@@ -28,6 +28,7 @@ const gfycat = async (videourl, options) => {
   // cleaning the html
   const $ = cheerio.load(html);
   html = $('iframe')
+    .attr('style', '')
     .parent()
     .html();
 

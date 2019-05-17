@@ -18,6 +18,8 @@ const metacafeurl = 'http://www.metacafe.com/watch/11560991/this-is-what-happens
 const metacafenotvideourl =
   'http://www.metacafe.com/watch/115609asdfg91/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/';
 const gfycaturl = 'https://gfycat.com/boringmerryhyena-michaela-coel-chewing-gum-awkward';
+const giphyurl = 'https://giphy.com/gifs/80s-back-to-the-future-happening-now-ktRHi4nFxNDOw';
+
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
 
@@ -234,7 +236,7 @@ describe('testing gfycat implementation', () => {
       title: expect.stringMatching('Michaela Coel - Chewing Gum Hi'),
       thumbnail_url: expect.stringMatching('https://thumbs.gfycat.com/BoringMerryHyena-mobile.jpg'),
       html: expect.stringContaining(
-        '<iframe src="https://gfycat.com/ifr/boringmerryhyena" frameborder="0" scrolling="no" width="100%" height="100%" style="position:absolute;top:0;left:0;" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+        '<iframe src="https://gfycat.com/ifr/boringmerryhyena" frameborder="0" scrolling="no" width="100%" height="100%" style allowfullscreen></iframe>' /* eslint-disable-line max-len */
       )
     });
   });
@@ -242,6 +244,29 @@ describe('testing gfycat implementation', () => {
   test('using a non video url', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${metacafenotvideourl}`);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
+    });
+  });
+});
+
+describe('testing giphy implementation', () => {
+  test('using a giphy url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(giphyurl);
+    expect(data).toMatchObject({
+      provider_name: 'giphy',
+      title: expect.stringMatching('Back To The Future 80S GIF - Find & Share on GIPHY'),
+      thumbnail_url: expect.stringMatching('https://media.giphy.com/media/ktRHi4nFxNDOw/giphy.gif'),
+      html: expect.stringContaining(
+        '<iframe src="https://giphy.com/embed/ktRHi4nFxNDOw" width="480" height="262" frameborder="0" class="giphy-embed" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+      )
+    });
+  });
+
+  test('using a non video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(`${giphyurl}1234`);
     expect(data).toMatchObject({
       error: expect.stringContaining('Request failed with status code 404')
     });
