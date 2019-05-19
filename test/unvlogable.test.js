@@ -21,6 +21,7 @@ const gfycaturl = 'https://gfycat.com/boringmerryhyena-michaela-coel-chewing-gum
 const giphyurl = 'https://giphy.com/gifs/80s-back-to-the-future-happening-now-ktRHi4nFxNDOw';
 const livestreamurl = 'https://livestream.com/accounts/4175709/nestcam/videos/87117623';
 const myspaceurl = 'https://myspace.com/cypher.sessions/video/cypher-sessions-lex/109851405';
+const tiktokurl = 'https://www.tiktok.com/share/video/6620861036838784261';
 
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
@@ -319,6 +320,31 @@ describe('testing myspace implementation', () => {
   test('using a non video url', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${myspaceurl}1234`);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
+    });
+  });
+});
+
+describe('testing tiktok implementation', () => {
+  test('using a tiktok url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(tiktokurl);
+    expect(data).toMatchObject({
+      provider_name: 'tiktok',
+      title: expect.stringMatching('#Niagarafalls #canada #nature #naturelove #beautiful #high #falls'),
+      thumbnail_url: expect.stringMatching(
+        'https://m-p16.akamaized.net/obj/tos-maliva-p-0068/da141295b47e4bc989d36ecf7daeba67'
+      ),
+      html: expect.stringContaining(
+        '<iframe width="340" height="700" src="https://www.tiktok.com/embed/6620861036838784261" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
+      )
+    });
+  });
+
+  test('using a non video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(`${tiktokurl}1234`);
     expect(data).toMatchObject({
       error: expect.stringContaining('Request failed with status code 404')
     });
