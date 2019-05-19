@@ -1,6 +1,6 @@
 # Unvlogable [![Build Status](https://dev.azure.com/mamuso/mamuso/_apis/build/status/unvlogable?branchName=master)](https://dev.azure.com/mamuso/mamuso/_build/latest?definitionId=2&branchName=master)
 
-Providing a unified interface and a standardized oembed output for video services.
+A simple interface that provides a standardized oembed output for video services.
 
 The inspiration comes from an old idea that served as the foundation of [unvlog](http://unvlog.com). Back then we had it implemented in this [old and rusty ruby gem](https://github.com/mamuso/acts_as_unvlogable).
 
