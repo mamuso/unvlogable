@@ -58,6 +58,7 @@ unvlogable.livestream = require('./src/livestream');
 unvlogable.metacafe = require('./src/metacafe');
 unvlogable.myspace = require('./src/myspace');
 unvlogable.ted = require('./src/ted');
+unvlogable.tiktok = require('./src/tiktok');
 unvlogable.twitch = require('./src/twitch');
 unvlogable.vimeo = require('./src/vimeo');
 unvlogable.youtube = require('./src/youtube');
