@@ -52,9 +52,10 @@ await unvlogable('https://www.youtube.com/watch?v=_Nwn9ybsCRk', {
 - [Metacafe](http://www.metacafe.com)
 - [Myspace](https://myspace.com)
 - [Ted](https://www.ted.com/)
-- [Twitch](http://www.twitch.com)
-- [Vimeo](http://www.vimeo.com)
-- [Youtube](http://www.youtube.com)
+- [Tiktok](https://tiktok.com)
+- [Twitch](https://www.twitch.com)
+- [Vimeo](https://www.vimeo.com)
+- [Youtube](https://www.youtube.com)
 
 ## Running tests
 
