@@ -42,6 +42,20 @@ await unvlogable('https://www.youtube.com/watch?v=_Nwn9ybsCRk', {
 */
 ```
 
+## Supported Services
+
+- [Collegehumor](http://www.collegehumor.com)
+- [Dailymotion](https://www.dailymotion.com)
+- [Gfycat](http://gfycat.com)
+- [Giphy](https://giphy.com)
+- [Livestream](https://livestream.com/watch)
+- [Metacafe](http://www.metacafe.com)
+- [Myspace](https://myspace.com)
+- [Ted](https://www.ted.com/)
+- [Twitch](http://www.twitch.com)
+- [Vimeo](http://www.vimeo.com)
+- [Youtube](http://www.youtube.com)
+
 ## Running tests
 
 ```sh
