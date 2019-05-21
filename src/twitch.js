@@ -7,8 +7,7 @@ const twitch = async (videourl, options) => {
   const url = `https://api.twitch.tv/v4/oembed?url=${videourl}`;
 
   // gettign the data
-  const response = await helpers.getData(url);
-  let { title, thumbnail_url, html, width, height } = response;
+  let { title, thumbnail_url, html, width, height } = await helpers.getData(url);
 
   // twitch returns a 200 when it should return a 404
   if (!html) {

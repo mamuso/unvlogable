@@ -7,8 +7,7 @@ const vimeo = async (videourl, options) => {
   const url = `https://vimeo.com/api/oembed.json?url=${videourl}`;
 
   // gettign the data
-  const response = await helpers.getData(url);
-  let { title, thumbnail_url, html, width, height } = response;
+  let { title, thumbnail_url, html, width, height } = await helpers.getData(url);
 
   // making the thumbnail better if we can
   thumbnail_url = thumbnail_url.replace('295x166', '1280x720');

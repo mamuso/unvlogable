@@ -8,8 +8,7 @@ const gfycat = async (videourl, options) => {
   const url = `https://api.gfycat.com/v1/oembed?url=${videourl}`;
 
   // gettign the data
-  const response = await helpers.getData(url);
-  let { title, html, width, height } = response;
+  let { title, html, width, height } = await helpers.getData(url);
 
   // get the element id
   const vid = videourl

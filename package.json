@@ -1,6 +1,6 @@
 {
   "name": "unvlogable",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Get a collection of metadata from a video URL",
   "main": "unvlogable.js",
   "scripts": {

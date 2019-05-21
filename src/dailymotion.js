@@ -7,8 +7,7 @@ const dailymotion = async (videourl, options) => {
   const url = `http://www.dailymotion.com/services/oembed?url=${videourl}`;
 
   // gettign the data
-  const response = await helpers.getData(url);
-  let { title, thumbnail_url, html, width, height } = response;
+  let { title, thumbnail_url, html, width, height } = await helpers.getData(url);
 
   // dailymotion returns a 200 when it should return a 404
   if (!html) {
