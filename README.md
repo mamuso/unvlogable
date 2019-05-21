@@ -46,6 +46,7 @@ await unvlogable('https://www.youtube.com/watch?v=_Nwn9ybsCRk', {
 
 - [Collegehumor](http://www.collegehumor.com)
 - [Dailymotion](https://www.dailymotion.com)
+- [Facebook video](https://www.facebook.com/watch/)
 - [Gfycat](http://gfycat.com)
 - [Giphy](https://giphy.com)
 - [Livestream](https://livestream.com/watch)
