@@ -52,6 +52,7 @@ const unvlogable = async (videourl, options) => {
 // Services
 unvlogable.collegehumor = require('./src/collegehumor');
 unvlogable.dailymotion = require('./src/dailymotion');
+unvlogable.facebook = require('./src/facebook');
 unvlogable.gfycat = require('./src/gfycat');
 unvlogable.giphy = require('./src/giphy');
 unvlogable.livestream = require('./src/livestream');
