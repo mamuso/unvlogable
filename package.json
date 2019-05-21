@@ -1,7 +1,7 @@
 {
   "name": "unvlogable",
-  "version": "0.0.2",
-  "description": "Get a collection of metadata from a video URL",
+  "version": "0.1.0",
+  "description": "A simple interface that provides a standardized oembed output for video services.",
   "main": "unvlogable.js",
   "scripts": {
     "test": "jest",

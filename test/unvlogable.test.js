@@ -22,6 +22,7 @@ const giphyurl = 'https://giphy.com/gifs/80s-back-to-the-future-happening-now-kt
 const livestreamurl = 'https://livestream.com/accounts/4175709/nestcam/videos/87117623';
 const myspaceurl = 'https://myspace.com/cypher.sessions/video/cypher-sessions-lex/109851405';
 const tiktokurl = 'https://www.tiktok.com/share/video/6620861036838784261';
+const facebookurl = 'https://www.facebook.com/trynottolaughpets/videos/2251864448405525';
 
 // Options
 const embedoptions = { embed: { width: '800', height: '600' } };
@@ -345,6 +346,29 @@ describe('testing tiktok implementation', () => {
   test('using a non video url', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${tiktokurl}1234`);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
+    });
+  });
+});
+
+describe('testing facebook implementation', () => {
+  test('using a facebook video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(facebookurl);
+    expect(data).toMatchObject({
+      provider_name: 'facebook',
+      title: expect.stringMatching('I don&apos;t care what anyone says, they are adorable! &#x1F917;'),
+      thumbnail_url: expect.stringMatching('https://graph.facebook.com/2251864448405525/picture'),
+      html: expect.stringContaining(
+        '<iframe width="500" height="500" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:video Facebook Social Plugin" src="https://www.facebook.com/v3.3/plugins/video.php?app_id=113869198637480&amp;href=https://www.facebook.com/plugins/video/oembed.json/?url=https://www.facebook.com/trynottolaughpets/videos/2251864448405525&amp;width=500&amp;height=500"></iframe>' /* eslint-disable-line max-len */
+      )
+    });
+  });
+
+  test('using a non video url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(`${facebookurl}1234`);
     expect(data).toMatchObject({
       error: expect.stringContaining('Request failed with status code 404')
     });
