@@ -7,8 +7,7 @@ const giphy = async (videourl, options) => {
   const apiurl = `https://giphy.com/services/oembed?url=${videourl}`;
 
   // gettign the data
-  const response = await helpers.getData(apiurl);
-  let { title, url, width, height } = response;
+  let { title, url, width, height } = await helpers.getData(apiurl);
 
   // get the element id
   const vid = url

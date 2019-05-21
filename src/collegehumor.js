@@ -8,8 +8,7 @@ const collegehumor = async (videourl, options) => {
   const url = `http://www.collegehumor.com/oembed.json?url=${videourl}`;
 
   // gettign the data
-  const response = await helpers.getData(url);
-  let { title, thumbnail_url, html, width, height } = response;
+  let { title, thumbnail_url, html, width, height } = await helpers.getData(url);
 
   // making the thumbnail better if we can
   const videopage = await helpers.getData(videourl);

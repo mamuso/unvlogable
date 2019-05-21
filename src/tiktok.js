@@ -7,8 +7,7 @@ const tiktok = async (videourl, options) => {
   const url = `https://www.tiktok.com/oembed?url=${videourl}`;
 
   // gettign the data
-  const response = await helpers.getData(url);
-  let { title, thumbnail_url, html, width, height, errMsg } = response;
+  let { title, thumbnail_url, html, width, height, errMsg } = await helpers.getData(url);
 
   if (errMsg) {
     console.error('Error:', 'Request failed with status code 404');

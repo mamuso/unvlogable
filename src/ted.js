@@ -7,8 +7,7 @@ const ted = async (videourl, options) => {
   const url = `https://www.ted.com/services/v1/oembed.json?url=${videourl}`;
 
   // gettign the data
-  const response = await helpers.getData(url);
-  let { title, thumbnail_url, html, width, height } = response;
+  let { title, thumbnail_url, html, width, height } = await helpers.getData(url);
 
   // making the thumbnail better if we can
   thumbnail_url = thumbnail_url.replace('?h=316&w=560', '');
