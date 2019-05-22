@@ -23,7 +23,9 @@
   },
   "homepage": "https://github.com/mamuso/unvlogable#readme",
   "jest": {
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "coverageDirectory": "./coverage/",
+    "collectCoverage": true
   },
   "dependencies": {
     "axios": "^0.18.0",
