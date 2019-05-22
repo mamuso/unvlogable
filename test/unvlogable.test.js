@@ -21,6 +21,7 @@ const gfycaturl = 'https://gfycat.com/boringmerryhyena-michaela-coel-chewing-gum
 const giphyurl = 'https://giphy.com/gifs/80s-back-to-the-future-happening-now-ktRHi4nFxNDOw';
 const livestreamurl = 'https://livestream.com/accounts/4175709/nestcam/videos/87117623';
 const myspaceurl = 'https://myspace.com/cypher.sessions/video/cypher-sessions-lex/109851405';
+const myspacemusicurl = 'https://myspace.com/pharrell/music/song/happy-from-despicable-me-2-97026930-108159781';
 const tiktokurl = 'https://www.tiktok.com/share/video/6620861036838784261';
 const facebookurl = 'https://www.facebook.com/trynottolaughpets/videos/2251864448405525';
 
@@ -315,6 +316,14 @@ describe('testing myspace implementation', () => {
       html: expect.stringContaining(
         '<iframe width="1280" height="720" src="https://myspace.com/play/video/cypher-sessions-lex-109851405-112547939" frameborder="0" allowfullscreen></iframe>' /* eslint-disable-line max-len */
       )
+    });
+  });
+
+  test('using a music url', async () => {
+    expect.assertions(1);
+    const data = await unvlogable(`${myspacemusicurl}`);
+    expect(data).toMatchObject({
+      error: expect.stringContaining('Request failed with status code 404')
     });
   });
 
