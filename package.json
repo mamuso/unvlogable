@@ -5,7 +5,7 @@
   "main": "unvlogable.js",
   "scripts": {
     "test": "jest",
-    "codecov": "codecov"
+    "codecov": "codecov",
     "eslint": "eslint --ignore-path .gitignore .",
     "prettier-eslint": "prettier-eslint --write '{src,test}/**/*.{js,jsx}' "
   },
