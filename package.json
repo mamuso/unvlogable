@@ -4,7 +4,7 @@
   "description": "A simple interface that provides a standardized oembed output for video services.",
   "main": "unvlogable.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest && codecov",
     "eslint": "eslint --ignore-path .gitignore .",
     "prettier-eslint": "prettier-eslint --write '{src,test}/**/*.{js,jsx}' "
   },
@@ -31,6 +31,7 @@
     "parse-domain": "^2.1.7"
   },
   "devDependencies": {
+    "codecov": "^3.5.0",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-config-strongloop": "^2.1.0",
