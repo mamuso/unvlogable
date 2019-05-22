@@ -1,4 +1,4 @@
-# Unvlogable [![Build Status](https://dev.azure.com/mamuso/mamuso/_apis/build/status/unvlogable?branchName=master)](https://dev.azure.com/mamuso/mamuso/_build/latest?definitionId=2&branchName=master)
+# Unvlogable [![Build Status](https://dev.azure.com/mamuso/mamuso/_apis/build/status/unvlogable?branchName=master)](https://dev.azure.com/mamuso/mamuso/_build/latest?definitionId=2&branchName=master) [![codecov](https://codecov.io/gh/mamuso/unvlogable/branch/master/graph/badge.svg)](https://codecov.io/gh/mamuso/unvlogable)
 
 A simple interface that provides a standardized oembed output for video services.
 
