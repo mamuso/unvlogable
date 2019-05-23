@@ -20,5 +20,9 @@ steps:
       npm run eslint
       npm run test
       npm run codecov -- --token=$(CODECOV_TOKEN)
-      cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --repoToken $(COVERALLS_TOKEN) --commitId "$(Build.SourceVersion)" --commitBranch "$(Build.SourceBranchName)" --commitAuthor "$(Build.RequestedFor)" --commitEmail "$(Build.RequestedForEmail)" --commitMessage "$(Build.SourceVersionMessage)" --jobId "$(Build.BuildId)"
+      export COVERALLS_REPO_TOKEN=$(COVERALLS_TOKEN)
+      export CI_BRANCH=$(Build.SourceBranch)
+      export CI_BUILD_NUMBER=$(Build.BuildNumber)
+      export CI_BUILD_URL=$(Build.BuildUri)
+      cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
     displayName: 'npm install and test'
