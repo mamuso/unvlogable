@@ -6,7 +6,6 @@
   "scripts": {
     "test": "jest",
     "codecov": "codecov",
-    "coveralls": "coveralls",
     "eslint": "eslint --ignore-path .gitignore .",
     "prettier-eslint": "prettier-eslint --write '{src,test}/**/*.{js,jsx}' "
   },
