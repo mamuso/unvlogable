@@ -35,6 +35,7 @@
   },
   "devDependencies": {
     "codecov": "^3.5.0",
+    "coveralls": "^3.0.3",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.2.0",
     "eslint-config-strongloop": "^2.1.0",
