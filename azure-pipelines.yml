@@ -14,23 +14,21 @@ steps:
     inputs:
       versionSpec: '10.x'
     displayName: 'Install Node.js'
-    env:
-      # Pretend to be AppVeyor for now
-      APPVEYOR: true
-      APPVEYOR_BUILD_NUMBER: $(Build.BuildNumber)
-      APPVEYOR_BUILD_ID: $(Agent.OS)_$(node_version)
-      APPVEYOR_REPO_COMMIT: $(Build.SourceVersion)
-      APPVEYOR_REPO_BRANCH: $(Build.SourceBranchName)
-      # Overwrite the AppVeyor Service Name
-      COVERALLS_SERVICE_NAME: Azure Pipelines
-      COVERALLS_REPO_TOKEN: $(COVERALLS_TOKEN)
-      COVERALLS_PARALLEL: true
-      CI_PULL_REQUEST: $(System.PullRequest.PullRequestNumber)
       
   - script: |
       npm install
       npm run eslint
       npm run test
       npm run codecov -- --token=$(CODECOV_TOKEN)
+      export APPVEYOR: true
+      export APPVEYOR_BUILD_NUMBER: $(Build.BuildNumber)
+      export APPVEYOR_BUILD_ID: $(Agent.OS)_$(node_version)
+      export APPVEYOR_REPO_COMMIT: $(Build.SourceVersion)
+      export APPVEYOR_REPO_BRANCH: $(Build.SourceBranchName)
+      export COVERALLS_SERVICE_NAME: Azure Pipelines
+      export COVERALLS_REPO_TOKEN: $(COVERALLS_TOKEN)
+      export COVERALLS_PARALLEL: true
+      export CI_PULL_REQUEST: $(System.PullRequest.PullRequestNumber)
       cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js
+      
     displayName: 'npm install and test'
