@@ -1,4 +1,4 @@
-# Unvlogable ![npm](https://img.shields.io/npm/v/unvlogable.svg) [![Build Status](https://dev.azure.com/mamuso/mamuso/_apis/build/status/unvlogable?branchName=master)](https://dev.azure.com/mamuso/mamuso/_build/latest?definitionId=2&branchName=master) [![codecov](https://codecov.io/gh/mamuso/unvlogable/branch/master/graph/badge.svg)](https://codecov.io/gh/mamuso/unvlogable) [![Coverage Status](https://coveralls.io/repos/github/mamuso/unvlogable/badge.svg?branch=master)](https://coveralls.io/github/mamuso/unvlogable?branch=master)
+# Unvlogable ![npm](https://img.shields.io/npm/v/unvlogable.svg) [![Build Status](https://dev.azure.com/mamuso/mamuso/_apis/build/status/unvlogable?branchName=master)](https://dev.azure.com/mamuso/mamuso/_build/latest?definitionId=2&branchName=master) ![Codecov](https://img.shields.io/codecov/c/github/mamuso/unvlogable.svg)
 
 A simple interface that provides a standardized oembed output for video services.
 
