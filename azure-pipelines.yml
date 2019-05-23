@@ -20,4 +20,5 @@ steps:
       npm run eslint
       npm run test
       npm run codecov -- --token=$(CODECOV_TOKEN)
+      npm run coveralls -- --repo_token=$(COVERALLS_TOKEN)
     displayName: 'npm install and test'
