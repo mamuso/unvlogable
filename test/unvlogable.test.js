@@ -48,8 +48,8 @@ test('calling with an inexistent url should throw an error', async () => {
   });
 });
 
-describe('testing youtube implementation', () => {
-  test('using a youtube url', async () => {
+describe('testing optionA implementation', () => {
+  test('using a url', async () => {
     expect.assertions(1);
     const data = await unvlogable(youtubeurl);
     expect(data).toMatchObject({
@@ -62,7 +62,7 @@ describe('testing youtube implementation', () => {
     });
   });
 
-  test('using a youtube url with embed options', async () => {
+  test('using a valid url with embed options', async () => {
     expect.assertions(1);
     const data = await unvlogable(youtubeurl, embedoptions);
     expect(data).toMatchObject({
@@ -75,7 +75,7 @@ describe('testing youtube implementation', () => {
     });
   });
 
-  test('using a short youtube url', async () => {
+  test('using a short url', async () => {
     expect.assertions(1);
     const data = await unvlogable(youtuurl);
     expect(data).toMatchObject({
@@ -88,7 +88,7 @@ describe('testing youtube implementation', () => {
     });
   });
 
-  test('using a short youtube url with embed options', async () => {
+  test('using an array of urls with embed options', async () => {
     expect.assertions(1);
     const data = await unvlogable(youtuurl, embedoptions);
     expect(data).toMatchObject({
@@ -102,23 +102,8 @@ describe('testing youtube implementation', () => {
   });
 });
 
-describe('testing vimeo implementation', () => {
-  test('using a vimeo url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(vimeourl);
-    expect(data).toMatchObject({
-      provider_name: 'vimeo',
-      title: expect.stringContaining('Unexpected Discoveries'),
-      thumbnail_url: expect.stringContaining('https://i.vimeocdn.com/video/748767326_1280x720.jpg'),
-      html: expect.stringContaining(
-        '<iframe src="https://player.vimeo.com/video/243244233?app_id=122963" width="426" height="240" frameborder="0" title="Unexpected Discoveries" allow="autoplay; fullscreen" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
-    });
-  });
-});
-
-describe('testing ted.com implementation', () => {
-  test('using a ted url', async () => {
+describe('testing option C implementation', () => {
+  test('using a valid url', async () => {
     expect.assertions(1);
     const data = await unvlogable(tedurl);
     expect(data).toMatchObject({
@@ -134,8 +119,8 @@ describe('testing ted.com implementation', () => {
   });
 });
 
-describe('testing collegehumor implementation', () => {
-  test('using a collegehumor url', async () => {
+describe('testing benchmark implementation', () => {
+  test('using a valid url', async () => {
     expect.assertions(1);
     const data = await unvlogable(collegehumorurl);
     expect(data).toMatchObject({
@@ -150,7 +135,7 @@ describe('testing collegehumor implementation', () => {
     });
   });
 
-  test('using a non video url', async () => {
+  test('using a non valid url', async () => {
     expect.assertions(1);
     const data = await unvlogable(collegehumornotvideourl);
     expect(data).toMatchObject({
@@ -159,21 +144,10 @@ describe('testing collegehumor implementation', () => {
   });
 });
 
-describe('testing dailymotion implementation', () => {
-  test('using a dailymotion url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(dailymotionurl);
-    expect(data).toMatchObject({
-      provider_name: 'dailymotion',
-      title: expect.stringMatching('Former CIA Chief of Disguise Breaks Down Spy Scenes From Film & TV'),
-      thumbnail_url: expect.stringContaining('ssl.dmcdn.net/v/Q0Mnv1SsW57svf1Z7/x240'),
-      html: expect.stringContaining(
-        '<iframe frameborder="0" width="480" height="269" src="https://www.dailymotion.com/embed/video/x77rfy1" allowfullscreen allow="autoplay"></iframe>' /* eslint-disable-line max-len */
-      )
-    });
-  });
+describe('testing redirection implementation', () => {
 
-  test('using a non video url', async () => {
+
+  test('using a non valid url', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${dailymotionurl}1234`);
     expect(data).toMatchObject({
@@ -182,8 +156,8 @@ describe('testing dailymotion implementation', () => {
   });
 });
 
-describe('testing twitch implementation', () => {
-  test('using a twitch url', async () => {
+describe('testing status implementation', () => {
+  test('using a status url', async () => {
     expect.assertions(1);
     const data = await unvlogable(twitchurl);
     expect(data).toMatchObject({
@@ -198,7 +172,7 @@ describe('testing twitch implementation', () => {
     });
   });
 
-  test('using a non video url', async () => {
+  test('using a non status url', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${twitchurl}1234`);
     expect(data).toMatchObject({
@@ -207,23 +181,9 @@ describe('testing twitch implementation', () => {
   });
 });
 
-describe('testing metacafe implementation', () => {
-  test('using a metacafe url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(metacafeurl);
-    expect(data).toMatchObject({
-      provider_name: 'metacafe',
-      title: expect.stringMatching('This Is What Happens When A Cow Falls In Love For A Man'),
-      thumbnail_url: expect.stringMatching(
-        'http://cdn.mcstatic.com/contents/videos_screenshots/11560000/11560991/preview.jpg' /* eslint-disable-line max-len */
-      ),
-      html: expect.stringContaining(
-        '<iframe width="328" height="480" src="http://www.metacafe.com/embed/11560991/this-is-what-happens-when-a-cow-falls-in-love-for-a-man/" frameborder="0" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
-    });
-  });
+describe('testing DDoS defense implementation', () => {
 
-  test('using a non video url', async () => {
+  test('Recovery strategy', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${metacafenotvideourl}`);
     expect(data).toMatchObject({
@@ -232,8 +192,8 @@ describe('testing metacafe implementation', () => {
   });
 });
 
-describe('testing gfycat implementation', () => {
-  test('using a gfycat url', async () => {
+describe('testing multi-fetching implementation', () => {
+  test('using an array of urls', async () => {
     expect.assertions(1);
     const data = await unvlogable(gfycaturl);
     expect(data).toMatchObject({
@@ -246,7 +206,7 @@ describe('testing gfycat implementation', () => {
     });
   });
 
-  test('using a non video url', async () => {
+  test('parsing urls from text', async () => {
     expect.assertions(1);
     const data = await unvlogable(`${metacafenotvideourl}`);
     expect(data).toMatchObject({
@@ -255,131 +215,3 @@ describe('testing gfycat implementation', () => {
   });
 });
 
-describe('testing giphy implementation', () => {
-  test('using a giphy url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(giphyurl);
-    expect(data).toMatchObject({
-      provider_name: 'giphy',
-      title: expect.stringMatching('Back To The Future 80S GIF - Find & Share on GIPHY'),
-      thumbnail_url: expect.stringMatching('https://media.giphy.com/media/ktRHi4nFxNDOw/giphy.gif'),
-      html: expect.stringContaining(
-        '<iframe src="https://giphy.com/embed/ktRHi4nFxNDOw" width="480" height="262" frameborder="0" class="giphy-embed" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
-    });
-  });
-
-  test('using a non video url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(`${giphyurl}1234`);
-    expect(data).toMatchObject({
-      error: expect.stringContaining('Request failed with status code 404')
-    });
-  });
-});
-
-describe('testing livestream implementation', () => {
-  test('using a livestream url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(livestreamurl);
-    expect(data).toMatchObject({
-      provider_name: 'livestream',
-      title: expect.stringMatching('The Great Kit-napping Caper'),
-      thumbnail_url: expect.stringMatching(
-        'https://img.new.livestream.com/videos/0000000005314f37/32addd64-fa30-4237-ba9c-9f30ab15a20f_1280x720.jpg'
-      ),
-      html: expect.stringContaining(
-        '<iframe src="https://livestream.com/accounts/4175709/events/4030780/videos/87117623/player?width=640&amp;height=360&amp;autoPlay=true&amp;mute=false" width="640" height="360" frameborder="0" scrolling="no" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
-    });
-  });
-
-  test('using a non video url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(`${livestreamurl}1234`);
-    expect(data).toMatchObject({
-      error: expect.stringContaining('Request failed with status code 404')
-    });
-  });
-});
-
-describe('testing myspace implementation', () => {
-  test('using a myspace url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(myspaceurl);
-    expect(data).toMatchObject({
-      provider_name: 'myspace',
-      title: expect.stringMatching('Cypher Sessions - Lex Video by Cypher Sessions on Myspace'),
-      thumbnail_url: expect.stringMatching(
-        'https://a4-images.myspacecdn.com/images04/6/5ae15811a99f465eae60e1c88504e1a5/full.jpg'
-      ),
-      html: expect.stringContaining(
-        '<iframe width="1280" height="720" src="https://myspace.com/play/video/cypher-sessions-lex-109851405-112547939" frameborder="0" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
-    });
-  });
-
-  test('using a music url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(`${myspacemusicurl}`);
-    expect(data).toMatchObject({
-      error: expect.stringContaining('Request failed with status code 404')
-    });
-  });
-
-  test('using a non video url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(`${myspaceurl}1234`);
-    expect(data).toMatchObject({
-      error: expect.stringContaining('Request failed with status code 404')
-    });
-  });
-});
-
-describe('testing tiktok implementation', () => {
-  test('using a tiktok url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(tiktokurl);
-    expect(data).toMatchObject({
-      provider_name: 'tiktok',
-      title: expect.stringMatching('#Niagarafalls #canada #nature #naturelove #beautiful #high #falls'),
-      thumbnail_url: expect.stringMatching(
-        'https://m-p16.akamaized.net/obj/tos-maliva-p-0068/da141295b47e4bc989d36ecf7daeba67'
-      ),
-      html: expect.stringContaining(
-        '<iframe width="340" height="700" src="https://www.tiktok.com/embed/6620861036838784261" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>' /* eslint-disable-line max-len */
-      )
-    });
-  });
-
-  test('using a non video url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(`${tiktokurl}1234`);
-    expect(data).toMatchObject({
-      error: expect.stringContaining('Request failed with status code 404')
-    });
-  });
-});
-
-describe('testing facebook implementation', () => {
-  test('using a facebook video url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(facebookurl);
-    expect(data).toMatchObject({
-      provider_name: 'facebook',
-      title: expect.stringMatching('I don&apos;t care what anyone says, they are adorable! &#x1F917;'),
-      thumbnail_url: expect.stringMatching('https://graph.facebook.com/2251864448405525/picture'),
-      html: expect.stringContaining(
-        '<iframe width="500" height="500" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" allow="encrypted-media" title="fb:video Facebook Social Plugin" src="https://www.facebook.com/v3.3/plugins/video.php?app_id=113869198637480&amp;href=https://www.facebook.com/plugins/video/oembed.json/?url=https://www.facebook.com/trynottolaughpets/videos/2251864448405525&amp;width=500&amp;height=500"></iframe>' /* eslint-disable-line max-len */
-      )
-    });
-  });
-
-  test('using a non video url', async () => {
-    expect.assertions(1);
-    const data = await unvlogable(`${facebookurl}1234`);
-    expect(data).toMatchObject({
-      error: expect.stringContaining('Request failed with status code 404')
-    });
-  });
-});
